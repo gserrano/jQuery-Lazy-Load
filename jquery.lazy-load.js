@@ -8,21 +8,29 @@
  * Required: jQuery Javascript Library
  * http://jquery.com/
  */
+var images;
 (function($){
 $.fn.lazyLoad = function() {
-   var images = this,
-       classe = this.selector.replace('.','');
+   
+   images = this;
+   
    showVisible();
+   console.log('lazyload');
+   
    $(window).scroll(function(){ showVisible(); })
+   
    function showVisible(){
-      images.each(function(){
+      console.log('showvisible');
+      console.log(images);
+      images.each(function(index,value){
          var img = $(this);
-         if(img.hasClass(classe)){
-            var imgTop = img.offset().top, wTop = $(window).scrollTop() + $(window).height() + 100;
+            var imgTop = img.offset().top,wTop = $(window).scrollTop() + $(window).height() + 100;
+            
             if(wTop > imgTop){ 
-               img.removeClass(classe).attr('src', img.data('src')).fadeIn();
+               img.attr('src', img.data('src')).fadeIn();
+               //images.splice(index,1);
+               //console.log(index);
             } 
-         }
       })
    }
 };
