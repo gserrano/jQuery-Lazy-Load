@@ -1,5 +1,6 @@
 /*
  * jQuery LazyLoad Plugin v1.0
+ * https://github.com/gserrano/jQuery-Lazy-Load
  * http://odesenvolvedor.com.br/
  *
  * Copyright 2011, Guilherme Serrano - http://guilhermeserrano.com.br
