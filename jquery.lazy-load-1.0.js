@@ -12,21 +12,20 @@
 (function($){
 $.fn.lazyLoad = function() {
    var images = this;
-   showVisible();
 
-   $(window).scroll(function(){ showVisible(); })
-   
-   function showVisible(){
+   var showVisible;
+   (showVisible = function (){
       images = $.grep(images, function(el,index){
          var img = $(el);
-            var imgTop = img.offset().top, wTop = $(window).scrollTop() + $(window).height() + 100;
-            if(wTop > imgTop){ 
-               img.attr('src', img.data('src')).fadeIn();
-               return false;
-            }else{
-               return true;
-            }
-      })
-   }
+         var imgTop = img.offset().top, wTop = $(window).scrollTop() + $(window).height() + 100;
+         if(wTop > imgTop){ 
+            img.attr('src', img.data('src')).fadeIn();
+            return false;
+         }
+         return true;
+      });
+
+   }).call();
+   $(window).scroll(function(){ showVisible(); });
 };
 })( jQuery );
