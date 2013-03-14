@@ -9,23 +9,23 @@
  * Required: jQuery
  */
 
-(function($){
-$.fn.lazyLoad = function() {
-   var images = this;
-
-   var showVisible;
-   (showVisible = function (){
-      images = $.grep(images, function(el,index){
-         var img = $(el);
-         var imgTop = img.offset().top, wTop = $(window).scrollTop() + $(window).height() + 100;
-         if(wTop > imgTop){ 
-            img.attr('src', img.data('src')).fadeIn();
-            return false;
-         }
-         return true;
-      });
-
-   }).call();
-   $(window).scroll(function(){ showVisible(); });
-};
-})( jQuery );
+ (function($) {
+     $.fn.lazyload = function() {
+         var images = this,
+             win = $(window),
+             showVisible;
+         (showVisible = function() {
+             images = $.grep(images, function(el, i) {
+                 var img = $(el),
+                     imgTop = img.offset().top,
+                     winTop = win.scrollTop() + win.height() + 100;
+                 if(winTop > imgTop) {
+                     img.attr('src', img.data('src')).fadeIn()
+                     return false;
+                 }
+                 return true;
+             });
+         }).call();
+         win.on('scroll', function() { showVisible(); });
+     }
+ })(jQuery);
