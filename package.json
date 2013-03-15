@@ -2,7 +2,7 @@
   "name": "jquery.lazyload",
   "title": "jQuery Lazy Load",
   "description": "A jQuery plugin to lazy load images out of user's screen",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "homepage": "https://github.com/gserrano/jQuery-Lazy-Load",
   "author": {
     "name": "Guilherme Serrano",

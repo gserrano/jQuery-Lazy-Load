@@ -14,7 +14,7 @@
              img,
              top = {};
 
-         showVisible = function() {
+         (showVisible = function() {
              images = $.grep(images, function(el) {
                  img = $(el);
                  top.img = img.offset().top;
@@ -25,7 +25,7 @@
                  }
                  return true;
              });
-         };
+         }).call();
 
          win.on('scroll', showVisible);
      };
