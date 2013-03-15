@@ -6,23 +6,25 @@
  * Licensed under the MIT, GPL licenses.
  */
 
- (function($) {
+(function($) {
      $.fn.lazyLoad = function() {
          var images = this,
              win = $(window),
-             showVisible;
+             showVisible,
+             img,
+             top = {};
          (showVisible = function() {
-             images = $.grep(images, function(el, i) {
-                 var img = $(el),
-                     imgTop = img.offset().top,
-                     winTop = win.scrollTop() + win.height() + 100;
-                 if(winTop > imgTop) {
+             images = $.grep(images, function(el) {
+                 img = $(el);
+                 top.img = img.offset().top;
+                 top.win = win.scrollTop() + win.height() + 100;
+                 if(top.win > top.img) {
                      img.attr('src', img.data('src')).fadeIn();
                      return false;
                  }
                  return true;
              });
-         }).call();
-         win.on('scroll', function() { showVisible(); });
+         })();
+         win.on('scroll', showVisible);
      };
  })(jQuery);
