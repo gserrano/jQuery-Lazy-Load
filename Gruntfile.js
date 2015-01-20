@@ -18,13 +18,23 @@ module.exports = function(grunt) {
     },
     jshint: {
       all: ['Gruntfile.js', 'src/**/*.js']
+    },
+    connect: {
+      server: {
+        options: {
+          port: 9001,
+          keepalive: true
+        }
+      }
     }
   });
 
   // Load the plugin that provides the "uglify" task.
-  grunt.loadNpmTasks('grunt-contrib');
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
   // Default task(s).
   grunt.registerTask('default', ['jshint', 'uglify']);
-
+  grunt.registerTask('server', 'connect');
 };
