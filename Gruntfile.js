@@ -26,24 +26,15 @@ module.exports = function(grunt) {
           keepalive: true
         }
       }
-    },
-    watch: {
-      assets: {
-        files: ['**/*.js', '**/*.html', '**/*.css'],
-        options: {
-          livereload: true
-        }
-      }
     }
   });
 
   // Load the plugin that provides the "uglify" task.
-  grunt.loadNpmTasks('grunt-contrib');
   grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-contrib-watch')
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
   // Default task(s).
   grunt.registerTask('default', ['jshint', 'uglify']);
-  grunt.registerTask('server', ['connect', 'watch']);
-
+  grunt.registerTask('server', 'connect');
 };
